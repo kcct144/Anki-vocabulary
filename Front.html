@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <div class="col col1">
+            <!-- 固定内容 -->
+            <div>
+                <!-- 单词 -->
+                <h3>{{单词}}</h3>
+                <!-- 音标和发音 -->
+                <div>
+                    <p style="display: inline" class="gray-text">{{音标}}</p>
+                    <audio id="my-audio" src="https://dict.youdao.com/dictvoice?audio={{单词}}" autoplay>
+                    </audio>
+                    <button onclick="document.getElementById('my-audio').play()" style="display: inline">
+                        ▶️
+                    </button>
+                </div>
+                <div>
+                    <p class="gray-text">{{考纲}}</p>
+                </div>
+                <!-- 单词解释 -->
+                <div>
+                    {{#基本释义}}
+                    <div>
+                        {{基本释义}}
+                    </div>
+                    {{/基本释义}}
+                    <br>
+                    {{#柯林斯英汉}}
+                    <details>
+                        <summary>柯林斯英汉</summary>
+                        <div>{{柯林斯英汉}}</div>
+                    </details><br>
+                    {{/柯林斯英汉}}
+                    {{#英英释义}}
+                    <details>
+                        <summary>英英释义</summary>
+                        <div>{{英英释义}}</div>
+                    </details><br>
+                    {{/英英释义}}
+                </div>
+            </div>
+            <!-- 自定义笔记 -->
+            <div>
+                <h3>我的笔记</h3>
+                {{#易混}}<div class="note">{{易混}}</div><br>{{/易混}}
+                {{#笔记}}<div class="note">{{笔记}}</div><br>{{/笔记}}
+                {{#笔记区2}}<div class="note">{{笔记区2}}</div><br>{{/笔记区2}}
+                {{#笔记区3}}<div class="note">{{笔记区3}}</div><br>{{/笔记区3}}
+                {{#笔记区4}}<div class="note">{{笔记区4}}</div><br>{{/笔记区4}}
+            </div>
+        </div>
+        <div class="col col2">
+            <div>
+                <button onclick="window.location.href='https://fanyi.baidu.com/#en/zh/{{单词}}'" style="display: inline">
+                    百度
+                </button>
+                <button onclick="window.location.href='https://www.collinsdictionary.com/zh/dictionary/english/{{单词}}'"
+                    style="display: inline">
+                    Collins
+                </button>
+                <button onclick="window.location.href='https://dict.youdao.com/result?word={{单词}}&lang=en'"
+                    style="display: inline">
+                    有道
+                </button>
+                <button onclick="window.location.href='https://www.vocabulary.com/dictionary/{{单词}}'"
+                    style="display: inline">
+                    Vocabulary
+                </button>
+                <button onclick="window.location.href='https://www.etymonline.com/search?q={{单词}}'"
+                    style="display: inline">
+                    词源
+                </button>
+            </div>
+            <div>
+                {{#图片}}<div>
+                    <h3>收集的图片</h3>{{图片}}
+                </div>{{/图片}}
+                <div>
+                    <h3>Bing搜图</h3>
+                    <div>
+                        <iframe id="iframe-shrink" src="https://cn.bing.com/images/search?q={{单词}}" frameborder="0"
+                            width="100%" height="400px"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>var initVoice = function () {
+        var player = document.getElementById('dictVoice');
+        document.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target.hasAttribute('role') && target.getAttribute('role').indexOf('dict_audio_js') >= 0) {
+                var url = target.getAttribute('data-rel');
+                player.setAttribute('src', url);
+                player.volume = 1;
+                player.play();
+                e.preventDefault();
+            }
+        }, false);
+    };
+    initVoice();</script>
+<script>var initVoice = function () {
+        var player = document.getElementById('dictVoice');
+        document.addEventListener('click', function (e) {
+            var target = e.target;
+            if (target.hasAttribute('role') && target.getAttribute('role').indexOf('dict_audio_js') >= 0) {
+                var url = target.getAttribute('data-rel');
+                player.setAttribute('src', url);
+                player.volume = 1;
+                player.play();
+                e.preventDefault();
+            }
+        }, false);
+    };
+    initVoice();</script>
